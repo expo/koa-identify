@@ -60,8 +60,9 @@ By default, the cookies will be named `kb` for the browser identifier and `ks` f
 #### Identifiers
 Identifiers are created with the `crypto.randomBytes` method plus an encoding of the current time from the server setting the cookies.
 
-#### Explicitly setting these
+#### Explicitly setting the browser or session
 
-Just set the cookie using `this.cookies.set` before this middleware runs.
+If you really want to do this for some reason, just set the cookie using `this.cookies.set` before this middleware runs.
+
 In the future, a setter may be provided, but in general, its best to let this library take care of that for you.
 
