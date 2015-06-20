@@ -21,28 +21,32 @@ function _newIdentifier(len) {
 
 }
 
-module.exports = function (app, opts) {
+module.exports = function (opts) {
   opts = opts || {};
+
+  var sharedDefaults = {
+    overwrite: true,
+    httpOnly: true,
+    generateIdentifer: _newIdentifier,
+  };
 
   var sessionCookieOpts = _.assign({
     name: 'ks',
-    overwrite: true,
-    httpOnly: true,
-  }, opts, opts.session);
+    prefix: 's-',
+  }, sharedDefaults, opts, opts.session);
 
   var browserCookieOpts = _.assign({
     name: 'kb',
-    overwrite: true,
-    httpOnly: true,
     expires: A_THOUSAND_YEARS_FROM_NOW,
-  }, opts, opts.browser);
+    prefix: 'b-',
+  }, sharedDefaults, opts, opts.browser);
 
   return function* (next) {
     var ks = this.cookies.get(sessionCookieOpts.name);
     this.charlie = true;
     if (!ks) {
       this.broad = true;
-      ks = 's:' + _newIdentifier();
+      ks = sessionCookieOpts.prefix + _newIdentifier();
       this.sessionIdCreated = true;
       this.cookies.set(sessionCookieOpts.name, ks, sessionCookieOpts);
     }
@@ -50,7 +54,7 @@ module.exports = function (app, opts) {
 
     var kb = this.cookies.get(browserCookieOpts.name);
     if (!kb) {
-      kb = 'b:' + _newIdentifier();
+      kb = browserCookieOpts.prefix + _newIdentifier();
       this.browserIdCreated = true;
       this.cookies.set(browserCookieOpts.name, kb, browserCookieOpts);
     }
