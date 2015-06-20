@@ -53,4 +53,15 @@ Ex:
 
 The defaults are almost always good unless your site is using https all the time in which case you may want to set the `{secure: true}` option for extra security.
 
+By default, the cookies will be named `kb` for the browser identifier and `ks` for the session identifier. The cookies will also be set to use the `httpOnly` which makes them slightly less vulnerable to XSS attacks.
+
+## Etc.
+
+#### Identifiers
+Identifiers are created with the `crypto.randomBytes` method plus an encoding of the current time from the server setting the cookies.
+
+#### Explicitly setting these
+
+Just set the cookie using `this.cookies.set` before this middleware runs.
+In the future, a setter may be provided, but in general, its best to let this library take care of that for you.
 
