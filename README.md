@@ -21,7 +21,7 @@ var identify = require('koa-identify');
 
 var app = koa();
 
-app.use(identify(app));
+app.use(identify());
 
 app.use(function *(){
 
@@ -68,7 +68,7 @@ options given will be used for both.
 
 Ex:
 ```js
-app.use(identify(app, {
+app.use(identify({
     session: {
         name: 'custom-session-cookie-name',
     },
