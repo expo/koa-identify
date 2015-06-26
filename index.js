@@ -52,3 +52,4 @@ module.exports = function (opts) {
 }
 
 module.exports._newIdentifier = _newIdentifier;
+module.exports.A_THOUSAND_YEARS_FROM_NOW = A_THOUSAND_YEARS_FROM_NOW;

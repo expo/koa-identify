@@ -1,6 +1,6 @@
 {
   "name": "koa-identify",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Koa middleware that uses two cookies to uniquely identify a browser and a browser session",
   "main": "build/index.js",
   "scripts": {
