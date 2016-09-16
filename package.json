@@ -1,8 +1,8 @@
 {
   "name": "koa-identify",
-  "version": "1.2.1",
+  "version": "2.0.0",
   "description": "Koa middleware that uses two cookies to uniquely identify a browser and a browser session",
-  "main": "build/index.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -26,7 +26,6 @@
   },
   "homepage": "https://github.com/exponentjs/koa-identify#readme",
   "dependencies": {
-    "lodash-node": "^3.9.3",
-    "slugid": "^1.0.3"
+    "slugid": "^1.1.0"
   }
 }
